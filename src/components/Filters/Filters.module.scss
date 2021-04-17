@@ -1,0 +1,98 @@
+@import '../../styles/variables';
+
+.root {
+  background-color: $base-background;
+  padding: 24px 20px;
+  border-radius: 16px;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.04);
+  margin-bottom: 40px;
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.headerIcon {
+  margin-top: 4px;
+  margin-right: 8px;
+}
+
+.header {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: $primary-600;
+}
+
+.form {
+  display: flex;
+}
+
+.fieldset {
+  border: none;
+  margin: 0;
+  margin-right: 24px;
+  padding: 0;
+}
+
+.legend {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: $secondary-200;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.buttonRow {
+  display: flex;
+  & > *:not(:last-child) {
+    margin-right: 12px;
+  }
+}
+
+.button {
+  padding: 4px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: $primary-600;
+  border-radius: 8px;
+  border: 1px solid $primary-600;
+  background: $base-background;
+  appearance: none;
+
+  &_active {
+    color: #ffffff;
+    background-color: $primary-600;
+  }
+
+  &_disabled,
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.checkboxes {
+  display: flex;
+  margin-top: 4px;
+
+  & > *:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+@media screen and (max-width: $screen-x-small) {
+  .form {
+    display: block;
+  }
+
+  .fieldset:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}

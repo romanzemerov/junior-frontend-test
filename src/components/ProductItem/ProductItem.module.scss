@@ -1,0 +1,158 @@
+@import '../../styles/variables';
+
+.root {
+  position: relative;
+  width: 100%;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.04);
+  padding: 8px 12px 12px 0;
+  border-radius: 16px;
+  min-height: 145px;
+  background-color: $base-background;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96px;
+  height: 100%;
+}
+
+.image {
+  object-fit: contain;
+  object-position: bottom;
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-left: 112px;
+}
+
+.typeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.type {
+  color: #a8b8ca;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  align-self: end;
+  margin-top: 4px;
+}
+
+.badges {
+  display: flex;
+}
+
+.badge {
+  font-weight: 600;
+  font-size: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  line-height: 20px;
+  background: red;
+  color: white;
+  text-align: center;
+  border-radius: 12px;
+
+  &:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  &_limited {
+    background-color: #e7eef9;
+    color: #809bb1;
+  }
+
+  &_new {
+    background-color: #e6f5e6;
+    color: #20b02e;
+  }
+}
+
+.name {
+  margin: 0;
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: $surface-high;
+}
+
+.description {
+  margin-bottom: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: $surface-high;
+}
+
+.priceRow {
+  margin-top: auto;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: $surface-high;
+}
+
+.discount {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  margin-left: 8px;
+  color: #ff9900;
+}
+
+@media screen and (max-width: $screen-medium) {
+  .root {
+    padding: 12px;
+  }
+
+  .imageWrapper {
+    top: auto;
+    left: auto;
+    right: 0;
+    bottom: 0;
+  }
+
+  .info {
+    padding-left: 0;
+    z-index: 1;
+  }
+
+  .type {
+    margin-top: 0;
+  }
+
+  .name {
+    width: calc(100% - 84px);
+  }
+
+  .description {
+    width: calc(100% - 84px);
+  }
+
+  .priceRow {
+    width: calc(100% - 84px);
+  }
+
+  .price {
+    display: block;
+  }
+
+  .discount {
+    margin-left: 0;
+  }
+}

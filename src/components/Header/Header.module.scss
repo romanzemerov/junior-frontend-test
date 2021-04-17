@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+
+.root {
+  background-color: $base-background;
+  padding: 18px 0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+
+  & > * {
+    flex: 0 0 auto;
+  }
+}
+
+.header {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: $surface-high;
+  margin: 0 auto 0 0;
+}
+
+@media screen and (max-width: $screen-x-small) {
+  .inner {
+    display: block;
+  }
+
+  .header {
+    margin-bottom: 16px;
+  }
+}

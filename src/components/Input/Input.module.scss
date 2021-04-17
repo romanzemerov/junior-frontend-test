@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+
+.root {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 330px;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 40px;
+}
+
+.input {
+  padding: 10px 8px 8px 44px;
+  width: 100%;
+  background: $base-background;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: $surface-high;
+  appearance: none;
+
+  &::placeholder {
+    color: #a8b8ca;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

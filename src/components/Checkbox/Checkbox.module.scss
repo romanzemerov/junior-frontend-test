@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+
+.root {
+  position: relative;
+}
+
+.input {
+  composes: visually-hidden from '../../index.scss';
+
+  &:checked + .box {
+    background-image: url('checkbox-active.svg');
+  }
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-image: url('checkbox.svg');
+}
+
+.label {
+  padding-left: 30px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: $surface-high;
+}

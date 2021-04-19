@@ -1,5 +1,5 @@
 import styles from './Header.module.scss'
-import Input from '../Input/Input'
+import SearchInput from '../Input/SearchInput'
 
 const Header = () => {
   return (
@@ -7,7 +7,7 @@ const Header = () => {
       <div className="site-wrapper">
         <div className={styles.inner}>
           <h1 className={styles.header}>Products</h1>
-          <Input />
+          <SearchInput />
         </div>
       </div>
     </header>

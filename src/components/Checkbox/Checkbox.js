@@ -1,20 +1,18 @@
 import styles from './Checkbox.module.scss'
-import { useState } from 'react'
-// import cn from 'classnames'
+import { filtersToggleCheckbox, getProducts } from '../../store/actions'
+import { useDispatch } from 'react-redux'
 
 const Checkbox = ({ id, label, isChecked }) => {
-  const [isActive, setActive] = useState(isChecked)
+  const dispatch = useDispatch()
+  const handleChange = () => {
+    dispatch(filtersToggleCheckbox(id))
+    dispatch(getProducts())
+  }
 
   return (
     <div className={styles.root}>
-      <input
-        className={styles.input}
-        type="checkbox"
-        id={id}
-        checked={isActive}
-        onChange={() => setActive(value => !value)}
-      />
-      <span className={styles.box} />
+      <input className={styles.input} type="checkbox" id={id} checked={isChecked} onChange={handleChange} />
+      <span className={styles.box} onClick={handleChange} />
       <label className={styles.label} htmlFor={id}>
         {label}
       </label>

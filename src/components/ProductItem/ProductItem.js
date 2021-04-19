@@ -6,6 +6,12 @@ const BADGES = {
   isLimited: { title: 'Limited', stylePostfix: 'limited' },
 }
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+})
+
 const ProductItem = ({ item }) => {
   const { name, description, categoryType, categoryName, price, discount } = item
 
@@ -30,12 +36,6 @@ const ProductItem = ({ item }) => {
       </div>
     )
   }
-
-  let formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-  })
 
   return (
     <article className={styles.root}>

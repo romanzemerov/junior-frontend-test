@@ -1,17 +1,41 @@
 import Checkbox from '../Checkbox/Checkbox'
 import styles from './Filters.module.scss'
 import { ReactComponent as HeaderIcon } from './header-icon.svg'
-import cn from 'classnames'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import FilterButton from '../FilterButton/FilterButton'
 
-const CHECKBOXES = [
-  {
-    id: 'limited',
-    label: 'Limited',
-  },
-  { id: 'new', label: 'New' },
-]
+import { changeFiltersTypes, getFiltersTypes, getProducts } from '../../store/actions'
+import { xor } from 'lodash'
 
 const Filters = () => {
+  const dispatch = useDispatch()
+  const checkboxes = useSelector(state => state.filters.checkboxes)
+  const items = useSelector(state => state.filters.types.items)
+  const activeFilterButtons = useSelector(state => state.filters.types.activeTypes)
+
+  const filtersButtonClickHandler = changedType => {
+    let newArray
+
+    if (changedType === 'all') {
+      newArray = ['all']
+    } else {
+      newArray = xor(activeFilterButtons, [changedType])
+      const idx = newArray.indexOf('all')
+
+      if (idx !== -1 && newArray.length > 1) {
+        newArray = [...newArray.slice(0, idx), ...newArray.slice(idx + 1)]
+      }
+    }
+
+    dispatch(changeFiltersTypes(newArray))
+    dispatch(getProducts())
+  }
+
+  useEffect(() => {
+    dispatch(getFiltersTypes())
+  }, [dispatch])
+
   return (
     <section className={styles.root}>
       <div className={styles.headerWrapper}>
@@ -25,24 +49,25 @@ const Filters = () => {
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Category</legend>
           <div className={styles.buttonRow}>
-            <button className={styles.button} type="button">
-              All
-            </button>
-
-            <button className={cn(styles.button, styles.button_active)} type="button">
-              All
-            </button>
-            <button className={cn(styles.button)} disabled type="button">
-              All
-            </button>
+            {items
+              ? items.map(({ id, name, type }) => (
+                  <FilterButton
+                    key={id}
+                    type={type}
+                    name={name}
+                    isActive={activeFilterButtons.includes(type)}
+                    onClick={filtersButtonClickHandler}
+                  />
+                ))
+              : null}
           </div>
         </fieldset>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Status</legend>
           <div className={styles.checkboxes}>
-            {CHECKBOXES.map(({ id, label }) => (
-              <Checkbox id={id} label={label} isChecked={false} key={id} />
-            ))}
+            {checkboxes
+              ? checkboxes.map(({ id, label, value }) => <Checkbox id={id} label={label} isChecked={value} key={id} />)
+              : null}
           </div>
         </fieldset>
       </form>

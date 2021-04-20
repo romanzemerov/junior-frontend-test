@@ -3,7 +3,7 @@ import ProductItem from '../ProductItem/ProductItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getProducts } from '../../store/actions'
-import Loader from '../../Loader/Loader'
+import Loader from '../Loader/Loader'
 import InfoBox from '../InfoBox/InfoBox'
 import { LOADING_STATES } from '../../helpers'
 

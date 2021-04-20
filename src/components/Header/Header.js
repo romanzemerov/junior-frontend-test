@@ -1,5 +1,5 @@
 import styles from './Header.module.scss'
-import SearchInput from '../Input/SearchInput'
+import SearchInput from '../SearchInput/SearchInput'
 
 const Header = () => {
   return (

@@ -33,12 +33,12 @@
 
 .fieldset {
   border: none;
-  margin: 0;
-  margin-right: 24px;
+  margin: 0 24px 0 0;
   padding: 0;
 }
 
 .legend {
+  display: inline-block;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
@@ -57,19 +57,42 @@
 
 .checkboxes {
   display: flex;
-  margin-top: 4px;
+  margin-top: 5px;
 
   & > *:not(:last-child) {
     margin-right: 16px;
   }
 }
 
-@media screen and (max-width: $screen-x-small) {
+@media screen and (max-width: $screen-medium) {
+  .root {
+    padding: 24px 12px;
+  }
+
+  .buttonRow {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-small) {
   .form {
     display: block;
   }
 
+  .fieldset {
+    margin-right: 0;
+  }
+
   .fieldset:not(:last-child) {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+  }
+
+  .checkboxes {
+    margin-top: 0;
   }
 }

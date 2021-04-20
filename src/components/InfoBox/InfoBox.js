@@ -2,8 +2,10 @@ import styles from './InfoBox.module.scss'
 
 const InfoBox = ({ text }) => {
   return (
-    <div className={styles.root}>
-      <span className={styles.text}>{text}</span>
+    <div>
+      <section className={styles.box}>
+        <span className={styles.text}>{text}</span>
+      </section>
     </div>
   )
 }

@@ -1,6 +1,13 @@
 @import '../../styles/variables';
 
 .root {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.box {
+  margin-right: auto;
+  margin-left: auto;
   background-color: $base-background;
   padding: 24px 20px;
   border-radius: 16px;
@@ -10,6 +17,7 @@
   justify-content: center;
   align-items: center;
   min-height: 200px;
+  max-width: 600px;
 }
 
 .text {

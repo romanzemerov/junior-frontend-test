@@ -66,12 +66,12 @@ const Filters = () => {
           <legend className={styles.legend}>Category</legend>
           <div className={styles.buttonRow}>
             {items
-              ? items.map(({ id, name, type }) => (
+              ? items.map(({ id, name }) => (
                   <FilterButton
                     key={id}
-                    type={type}
+                    id={id}
                     name={name}
-                    isActive={activeFilterButtons.includes(type)}
+                    isActive={activeFilterButtons.includes(id)}
                     onClick={filtersButtonClickHandler}
                   />
                 ))

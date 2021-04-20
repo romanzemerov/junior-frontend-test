@@ -15,8 +15,12 @@ const SearchInput = () => {
     debouncedDispatchGetProducts()
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
+
   return (
-    <form className={styles.root}>
+    <form className={styles.root} onSubmit={handleSubmit}>
       <span className={styles.icon}>
         <SearchIcon />
       </span>

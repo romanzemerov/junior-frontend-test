@@ -23,9 +23,13 @@ const ProductList = () => {
         <InfoBox text={"We didn't find anything :("} />
       ) : null}
       {loadingState === LOADING_STATES.FAILED ? <InfoBox text={'Error. Try again, please.'} /> : null}
-      <div className={styles.products}>
-        {items && items.map(({ id, ...rest }) => <ProductItem key={id} item={rest} />)}
-      </div>
+      {items ? (
+        <div className={styles.products}>
+          {items.map(({ id, ...rest }) => (
+            <ProductItem key={id} item={rest} />
+          ))}
+        </div>
+      ) : null}
     </div>
   )
 }

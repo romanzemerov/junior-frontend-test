@@ -29,6 +29,10 @@ const getActiveTypes = (currentActiveTypes, changedType) => {
   return newArray
 }
 
+const isOnlyAllTypeExist = types => {
+  return types.length === 1 && types.includes(DEFAULT_TYPE_ID)
+}
+
 const Filters = () => {
   const dispatch = useDispatch()
   const checkboxes = useSelector(state => state.filters.checkboxes)
@@ -36,6 +40,10 @@ const Filters = () => {
   const activeFilterButtons = useSelector(state => state.filters.types.activeTypes)
 
   const filtersButtonClickHandler = changedType => {
+    if (changedType === DEFAULT_TYPE_ID && isOnlyAllTypeExist(activeFilterButtons)) {
+      return
+    }
+
     dispatch(changeFiltersTypes(getActiveTypes(activeFilterButtons, changedType)))
     dispatch(getProducts())
   }

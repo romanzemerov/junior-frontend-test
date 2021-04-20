@@ -1,3 +1,6 @@
+export const LOADING_STATES = { IDLE: 'idle', LOADING: 'loading', SUCCEEDED: 'succeeded', FAILED: 'failed' }
+export const DEFAULT_TYPE_ID = 'all'
+
 export const fetchData = (url, dispatch, { onRequest, onSuccess, onError }) => {
   dispatch(onRequest())
   fetch(url)

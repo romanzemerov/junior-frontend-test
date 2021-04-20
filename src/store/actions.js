@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { fetchData } from './helpers'
+import { fetchData } from '../helpers'
 
 export const getFiltersTypesRequest = createAction('GET_FILTERS_TYPES_REQUEST')
 export const getFiltersTypesSuccess = createAction('GET_FILTERS_TYPES_SUCCESS')
@@ -22,7 +22,8 @@ export const getProductsError = createAction('GET_PRODUCTS_ERROR')
 
 export const getProducts = () => (dispatch, getState) => {
   const getQueryParams = filters => {
-    const types = filters.types.activeTypes.filter(type => type !== 'all').map(type => `category=${type}`)
+    const activeTypes = filters.types.activeTypes.filter(id => id !== 'all')
+    const types = filters.types.items.filter(({ id }) => activeTypes.includes(id)).map(({ id }) => `category[]=${id}`)
     const checkboxes = filters.checkboxes.filter(({ value }) => value).map(({ id, value }) => `${id}=${value}`)
     const searchQuery = `search=${filters.searchQuery}`
 

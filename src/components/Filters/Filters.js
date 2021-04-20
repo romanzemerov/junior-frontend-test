@@ -4,9 +4,30 @@ import { ReactComponent as HeaderIcon } from './header-icon.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import FilterButton from '../FilterButton/FilterButton'
-
 import { changeFiltersTypes, getFiltersTypes, getProducts } from '../../store/actions'
 import { xor } from 'lodash'
+import { DEFAULT_TYPE_ID } from '../../helpers'
+
+const getActiveTypes = (currentActiveTypes, changedType) => {
+  let newArray = [DEFAULT_TYPE_ID]
+
+  if (changedType === DEFAULT_TYPE_ID) {
+    return newArray
+  }
+
+  newArray = xor(currentActiveTypes, [changedType])
+  const idx = newArray.indexOf(DEFAULT_TYPE_ID)
+
+  if (idx !== -1 && newArray.length > 1) {
+    newArray = [...newArray.slice(0, idx), ...newArray.slice(idx + 1)]
+  }
+
+  if (newArray.length === 0) {
+    newArray = [DEFAULT_TYPE_ID]
+  }
+
+  return newArray
+}
 
 const Filters = () => {
   const dispatch = useDispatch()
@@ -15,20 +36,7 @@ const Filters = () => {
   const activeFilterButtons = useSelector(state => state.filters.types.activeTypes)
 
   const filtersButtonClickHandler = changedType => {
-    let newArray
-
-    if (changedType === 'all') {
-      newArray = ['all']
-    } else {
-      newArray = xor(activeFilterButtons, [changedType])
-      const idx = newArray.indexOf('all')
-
-      if (idx !== -1 && newArray.length > 1) {
-        newArray = [...newArray.slice(0, idx), ...newArray.slice(idx + 1)]
-      }
-    }
-
-    dispatch(changeFiltersTypes(newArray))
+    dispatch(changeFiltersTypes(getActiveTypes(activeFilterButtons, changedType)))
     dispatch(getProducts())
   }
 

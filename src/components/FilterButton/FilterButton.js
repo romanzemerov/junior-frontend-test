@@ -1,9 +1,9 @@
 import styles from './FilterButton.module.scss'
 import cn from 'classnames'
 
-const FilterButton = ({ type, name, isActive, onClick }) => {
+const FilterButton = ({ id, name, isActive, onClick }) => {
   const clickHandler = () => {
-    onClick(type)
+    onClick(id)
   }
 
   return (

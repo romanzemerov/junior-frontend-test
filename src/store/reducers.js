@@ -10,8 +10,7 @@ import {
   changeFiltersTypes,
   changeFiltersSearchInput,
 } from './actions'
-
-const LOADING_STATES = { IDLE: 'idle', LOADING: 'loading', SUCCEEDED: 'succeeded', FAILED: 'failed' }
+import { DEFAULT_TYPE_ID, LOADING_STATES } from '../helpers'
 
 const initialState = {
   filters: {
@@ -40,18 +39,17 @@ const initialState = {
   },
 }
 
-const defaultType = { id: 'all', type: 'all', name: 'All' }
-const defaultActiveType = 'all'
+const DEFAULT_TYPE = { id: DEFAULT_TYPE_ID, type: 'all', name: 'All' }
 
 export const reducer = createReducer(initialState, {
   [getFiltersTypesRequest]: state => {
     state.filters.types.status = LOADING_STATES.LOADING
-    state.filters.types.items = [defaultType]
-    state.filters.types.activeTypes = [defaultActiveType]
+    state.filters.types.items = [DEFAULT_TYPE]
+    state.filters.types.activeTypes = [DEFAULT_TYPE_ID]
   },
   [getFiltersTypesSuccess]: (state, { payload }) => {
     state.filters.types.status = LOADING_STATES.SUCCEEDED
-    state.filters.types.items = [defaultType, ...payload]
+    state.filters.types.items = [DEFAULT_TYPE, ...payload]
   },
   [getFiltersTypesError]: state => {
     state.filters.types.status = LOADING_STATES.FAILED

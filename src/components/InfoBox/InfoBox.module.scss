@@ -1,0 +1,20 @@
+@import '../../styles/variables';
+
+.root {
+  background-color: $base-background;
+  padding: 24px 20px;
+  border-radius: 16px;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.04);
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: $surface-high;
+}

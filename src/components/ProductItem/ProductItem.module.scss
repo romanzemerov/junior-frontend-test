@@ -59,8 +59,6 @@
   padding-left: 8px;
   padding-right: 8px;
   line-height: 20px;
-  background: red;
-  color: white;
   text-align: center;
   border-radius: 12px;
 
@@ -69,13 +67,13 @@
   }
 
   &_limited {
-    background-color: #e7eef9;
-    color: #809bb1;
+    background-color: $secondary-50;
+    color: $secondary-300;
   }
 
   &_new {
-    background-color: #e6f5e6;
-    color: #20b02e;
+    background-color: $accent-approving-background;
+    color: $accent-approving;
   }
 }
 

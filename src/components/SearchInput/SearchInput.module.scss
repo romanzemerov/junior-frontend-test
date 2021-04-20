@@ -22,13 +22,24 @@
   padding: 10px 8px 8px 44px;
   width: 100%;
   background: $base-background;
-  border: 1px solid #dddddd;
+  border: 1px solid $surface-low;
   border-radius: 8px;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: $surface-high;
   appearance: none;
+  transition: border-color 250ms;
+
+  &:hover,
+  &:focus {
+    border: 1px solid $primary-600;
+    outline: none;
+  }
+
+  &:active {
+    border: 1px solid $primary-700;
+  }
 
   &::placeholder {
     color: #a8b8ca;

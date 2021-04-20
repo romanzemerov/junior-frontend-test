@@ -11,10 +11,20 @@
   border: 1px solid $primary-600;
   background: $base-background;
   appearance: none;
+  transition: color, background-color 250ms;
+
+  &:hover {
+    background-color: #037bff;
+    color: $surface-blank;
+  }
 
   &_active {
-    color: #ffffff;
+    color: $surface-blank;
     background-color: $primary-600;
+
+    &:hover {
+      background-color: $primary-700;
+    }
   }
 
   &_disabled,
